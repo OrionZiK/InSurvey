@@ -1,0 +1,28 @@
+# SQL语句
+## USER表创建
+```postgresql
+CREATE TABLE AUTHORITYUSER(
+ID INT PRIMARY   KEY     NOT NULL,
+USERNAME         TEXT    NOT NULL,
+PASSWORD         TEXT    NOT NULL,
+EMAIL            CHAR(50),
+STATE            INT     NOT NULL,
+CREATETIME       DATE    NOT NULL,
+UPDATETIME       DATE    NOT NULL
+)
+```
+## PERMISSION表创建
+```postgresql
+CREATE TABLE AUTHORITYPERMISSION(
+ID INT PRIMARY   KEY     NOT NULL,
+NAME             TEXT    NOT NULL,
+DESCRIPTION      TEXT    NOT NULL,
+STATE            INT     NOT NULL,
+CREATETIME       DATE    NOT NULL,
+UPDATETIME       DATE    NOT NULL
+)
+```
+## USERPERMISSION表创建
+```postgresql
+
+```

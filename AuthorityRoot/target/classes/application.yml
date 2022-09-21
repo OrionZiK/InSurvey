@@ -1,0 +1,12 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/authoritycommand
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: root
+logging:
+  level:
+    org.springframework.boot.autoconfigure: debug
+mybatis:
+  mapper-locations: classpath:mapper/*.xml

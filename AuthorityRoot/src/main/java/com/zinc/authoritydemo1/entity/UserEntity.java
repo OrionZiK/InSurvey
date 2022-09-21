@@ -12,4 +12,17 @@ public class UserEntity {
     private Integer state; // 状态 0/禁止 1/正常
     private Date createTime;
     private Date updateTime;
+
+    public UserEntity() {
+    }
+
+    public UserEntity(Long id, String username, String password, String email, Integer state, Date createTime, Date updateTime) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.state = state;
+        this.createTime = createTime;
+        this.updateTime = updateTime;
+    }
 }

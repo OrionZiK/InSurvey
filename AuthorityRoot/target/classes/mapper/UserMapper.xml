@@ -8,7 +8,7 @@
     </select>
 
     <select id="findByName" resultType="com.zinc.authoritydemo1.entity.PermissionEntity">
-    SELECT * FROM authorityuser
+
     </select>
 
 
