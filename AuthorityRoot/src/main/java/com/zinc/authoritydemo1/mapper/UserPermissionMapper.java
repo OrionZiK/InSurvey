@@ -1,4 +1,8 @@
 package com.zinc.authoritydemo1.mapper;
 
-public class UserPermissionMapper {
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
+public interface UserPermissionMapper {
+
 }

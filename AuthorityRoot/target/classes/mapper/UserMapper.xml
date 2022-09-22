@@ -7,11 +7,14 @@
     SELECT * FROM authorityuser
     </select>
 
-    <select id="findByName" resultType="com.zinc.authoritydemo1.entity.PermissionEntity">
-
+    <select id="findByName"  parameterType="string" resultType="com.zinc.authoritydemo1.entity.PermissionEntity">
+    SELECT #{name} FROM authorityuser
     </select>
 
-
+    <delete id="deleteByName" parameterType="string">
+    DELETE FROM authoriyuser WHERE USERNAME = #{0}
+    </delete>
+    <!--
     <update id="update">
 
     </update>
@@ -21,4 +24,5 @@
     <delete id="">
 
     </delete>
+    -->
 </mapper>

@@ -18,8 +18,8 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @Autowired
-    UserMapper userMapper;
+//    @Autowired
+//    UserMapper userMapper;
 
     //查找
     @GetMapping("/findall")
@@ -30,7 +30,13 @@ public class UserController {
 
     @GetMapping("/find/{name}")
     public List<UserEntity> findByName(@PathVariable String name) {
-        return userService.findByName();
+        return userService.findByName(name);
     }
 
+    //删除
+
+    @GetMapping("/delete")
+    public Integer forceDelete(@PathVariable String name){
+        return userService.forceDelete(name);
+    }
 }

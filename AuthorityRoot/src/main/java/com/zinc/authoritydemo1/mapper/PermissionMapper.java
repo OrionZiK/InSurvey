@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface PermissionMapper {
 
-    public List<PermissionEntity> findAll();
+    //public List<PermissionEntity> findAll();
 
 }
