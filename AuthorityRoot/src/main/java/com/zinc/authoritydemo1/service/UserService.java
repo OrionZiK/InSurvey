@@ -47,7 +47,15 @@ public class UserService {
             return 0;                       //该员工不存在
         }
     }
-
+    //临时删除该员工
+    public Integer tempDelete(String name){
+        iif(existByName(name) == 1){
+            userMapper.deleteByName(name);      //彻底从数据库中删除该员工
+            return 1;                       //删除成功
+        }else{
+            return 0;                       //该员工不存在
+        }
+    }
 //    public Integer save(UserEntity entity) {
 //        if (entity.getId() == null){  //如果id为空，则为新增
 //            return userMapper.save(entity);
