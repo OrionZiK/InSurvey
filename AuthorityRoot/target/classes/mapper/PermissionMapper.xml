@@ -4,7 +4,7 @@
 <mapper namespace="com.zinc.authoritydemo1.mapper.PermissionMapper">
 
     <select id="findAll" resultType="com.zinc.authoritydemo1.entity.PermissionEntity">
-        SELECT * FROM demo
+        SELECT * FROM authoritypermission
     </select>
 
 

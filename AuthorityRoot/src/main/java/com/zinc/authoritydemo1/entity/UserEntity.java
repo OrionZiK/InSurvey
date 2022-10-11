@@ -9,7 +9,8 @@ public class UserEntity {
     private String username;
     private String password;
     private String email;
-    private Integer state; // 状态 0/禁止 1/正常
+    private Integer state;
+    // 状态 0/禁止 1/正常
     private Date createTime;
     private Date updateTime;
 

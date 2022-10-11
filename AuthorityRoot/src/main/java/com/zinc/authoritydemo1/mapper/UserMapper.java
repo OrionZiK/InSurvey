@@ -10,15 +10,17 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 @Mapper
-//@Component
+
 public interface UserMapper {
 
     public List<UserEntity> findAll();
-
+    /**查询所有用户*/
     public List<UserEntity> findByName(@Param(value="name") String name);
-
+    /**通过姓名查询*/
+    public Integer insertFull(@Param());
     public void deleteByName(String name);
+    /**通过名子删除*/
+    public Integer updateByName(@Param(value="name") String name,@Param(value="newName") String newName);
 
-    public List<UserEntity> update();
-
+    public Integer updatePassword(@Param(value="name") String name,@Param(value="newPassword") String newPassword);
 }

@@ -5,10 +5,7 @@ import com.zinc.authoritydemo1.mapper.UserMapper;
 import com.zinc.authoritydemo1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,7 +18,7 @@ public class UserController {
 //    @Autowired
 //    UserMapper userMapper;
 
-    //查找-------------------
+    /*查找-------------------*/
     @GetMapping("/findall")
     public List<UserEntity> findAll() {
 
@@ -30,7 +27,17 @@ public class UserController {
 
     @GetMapping("/find/{name}")
     public List<UserEntity> findByName(@PathVariable String name) {
-        return userService.findByName(name);
+         return userService.findByName(name);
+    }
+    //增加员工-------------
+    @PostMapping("/insert/{username,password,email,state}")
+    Integer insertFull(@PathVariable String username,
+                       @PathVariable String password,
+                       @PathVariable String email,
+                       @PathVariable Integer state) {
+        return userService.insertFull(username,password,email,state);
+        //调用Seveice层
+
     }
 
     //删除-----------------------
@@ -56,11 +63,14 @@ public class UserController {
     public Integer updatePassword(@PathVariable String name,@PathVariable String newPassword){
         return userService.updatePassword(name,newPassword);
     }
-    //修改邮箱
-    @GetMapping("updateEmail/{name}/{newEmail}")
-    public Integer updatePassword(@PathVariable String name,@PathVariable String newEmail){
-        return userService.updateEmail(name,newEmail);
-    }
+
+
+
+//    //修改邮箱
+//    @GetMapping("updateEmail/{name}/{newEmail}")
+//    public Integer updatePassword(@PathVariable String name,@PathVariable String newEmail){
+//        return userService.updateEmail(name,newEmail);
+//    }
     //增加员工-------------
 
 }

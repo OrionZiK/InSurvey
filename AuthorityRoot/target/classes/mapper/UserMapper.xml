@@ -7,13 +7,26 @@
     SELECT * FROM authorityuser
     </select>
 
-    <select id="findByName"  parameterType="string" resultType="com.zinc.authoritydemo1.entity.PermissionEntity">
-    SELECT #{name} FROM authorityuser
+    <select id="findByName"  parameterType="string" resultType="com.zinc.authoritydemo1.entity.UserEntity">
+    SELECT * FROM authorityuser WHERE USERNAME = #{name}
     </select>
 
     <delete id="deleteByName" parameterType="string">
-    DELETE FROM authoriyuser WHERE USERNAME = #{0}
+    DELETE FROM authorityuser WHERE USERNAME = #{name}
     </delete>
+
+    <update id="updateByName">
+    UPDATE authorityuser
+    SET USERNAME = #{newName} WHERE USERNAME = #{name}
+    </update>
+
+
+
+    <delete id="updatePassword">
+    UPDATE authorityuser
+    SET PASSWORD=#{newPassword} WHERE USERNAME = #{name}
+    </delete>
+
     <!--
     <update id="update">
 

@@ -1,7 +1,7 @@
 
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/authoritycommand
+    url: jdbc:postgresql://127.0.0.1:5432/authorityCommand
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: root

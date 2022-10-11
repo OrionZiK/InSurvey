@@ -26,13 +26,21 @@ public class UserService {
         List<UserEntity> list = userMapper.findByName(name);
         return list;
     }
+
+    public Integer insertFull(String username,String password,String email,Integer state){
+        Integer decetor;
+
+
+    }
     //检查数据库中员工是否存在
     public Integer existByName(String name){
         List<UserEntity> list = userMapper.findByName(name);
         if(list != null){
-            return 1;          //若查找对象存在则返回1
+            return 1;
+            //若查找对象存在则返回1
         }else{
-            return 0;          //不存在则返回0
+            return 0;
+            //不存在则返回0
         }
     }
 
@@ -41,19 +49,51 @@ public class UserService {
     //彻底删除该员工的所有信息
     public Integer forceDelete(String name){
         if(existByName(name) == 1){
-            userMapper.deleteByName(name);      //彻底从数据库中删除该员工
-            return 1;                       //删除成功
+            userMapper.deleteByName(name);
+            //彻底从数据库中删除该员工
+            return 1;
+            //删除成功
         }else{
-            return 0;                       //该员工不存在
+            return 0;
+            //该员工不存在
         }
     }
     //临时删除该员工
     public Integer tempDelete(String name){
-        iif(existByName(name) == 1){
-            userMapper.deleteByName(name);      //彻底从数据库中删除该员工
-            return 1;                       //删除成功
+        if(existByName(name) == 1){
+            userMapper.deleteByName(name);
+            //彻底从数据库中删除该员工
+            return 1;
+            //删除成功
         }else{
-            return 0;                       //该员工不存在
+            return 0;
+            //该员工不存在
+        }
+    }
+
+    //修改用户名
+    public Integer updateUserName(String username,String newUsername){
+        if(existByName(username) == 1){
+            userMapper.updateByName(username,newUsername);
+            //彻底从数据库中删除该员工
+            return 1;
+            //修改成功
+        }else{
+            return 0;
+            //该员工不存在
+        }
+    }
+
+    // 修改密码
+    public Integer updatePassword(String name,String newPassword){
+        if(existByName(name) == 1){
+            userMapper.updatePassword(name,newPassword);
+            //从数据库中修改
+            return 1;
+            //修改成功
+        }else{
+            return 0;
+            //该员工不存在
         }
     }
 //    public Integer save(UserEntity entity) {
