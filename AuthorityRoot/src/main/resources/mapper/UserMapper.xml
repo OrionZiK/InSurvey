@@ -4,29 +4,43 @@
 <mapper namespace="com.zinc.authoritydemo1.mapper.UserMapper">
     <!--查询全部以及通过用户名字查询-->
     <select id="findAll" resultType="com.zinc.authoritydemo1.entity.UserEntity">
-    SELECT * FROM authorityuser
+        SELECT * FROM authorityuser
     </select>
 
     <select id="findByName"  parameterType="string" resultType="com.zinc.authoritydemo1.entity.UserEntity">
-    SELECT * FROM authorityuser WHERE USERNAME = #{name}
+        <!---->
+        SELECT * FROM authorityuser WHERE USERNAME = #{name}
     </select>
 
+
+    <!--全信息新增-->
+    <insert id="insertFull" keyColumn="id" parameterType="com.zinc.authoritydemo1.entity.UserEntity">
+        insert into authorityuser(username,password,email,state,createTime,updateTime)
+        values(#{username},#{password},#{email},#{state},#{createTime},#{updateTime})
+
+    </insert>
+
     <delete id="deleteByName" parameterType="string">
-    DELETE FROM authorityuser WHERE USERNAME = #{name}
+        DELETE FROM authorityuser WHERE USERNAME = #{name}
     </delete>
 
-    <update id="updateByName">
-    UPDATE authorityuser
-    SET USERNAME = #{newName} WHERE USERNAME = #{name}
+    <update id="updateByName" >
+        UPDATE authorityuser
+        SET USERNAME = #{newName} WHERE USERNAME = #{name}
     </update>
 
 
 
+
     <delete id="updatePassword">
-    UPDATE authorityuser
-    SET PASSWORD=#{newPassword} WHERE USERNAME = #{name}
+        UPDATE authorityuser
+        SET PASSWORD=#{newPassword} WHERE USERNAME = #{name}
     </delete>
 
+    <update id="updateEmail">
+        UPDATE authorityuser
+        SET EMAIL = #{newEmail} WHERE USERNAME = #{name}
+    </update>
     <!--
     <update id="update">
 
