@@ -31,9 +31,9 @@ public interface UserMapper {
 
     public void deleteByName(String name);
     /**通过名子删除*/
-    public Integer updateByName(@Param(value="name") String name,@Param(value="newName") String newName);
+    public void updateByName(@Param(value="name") String name,@Param(value="newName") String newName);
 
-    public Integer updatePassword(@Param(value="name") String name,@Param(value="newPassword") String newPassword);
+    public void updatePassword(@Param(value="name") String name,@Param(value="newPassword") String newPassword);
 
-    public Integer updateEmail(@Param(value="name") String name,@Param(value="newEmail") String newEmail);
+    public void updateEmail(@Param(value="name") String name,@Param(value="newEmail") String newEmail);
 }

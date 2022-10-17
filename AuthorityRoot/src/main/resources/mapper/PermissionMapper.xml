@@ -3,9 +3,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zinc.authoritydemo1.mapper.PermissionMapper">
 
+
+
     <select id="findAll" resultType="com.zinc.authoritydemo1.entity.PermissionEntity">
         SELECT * FROM authoritypermission
     </select>
 
+    <select id="findPermissionById" parameterType="Integer" resultType="com.zinc.authoritydemo1.entity.PermissionEntity">
+        SELECT * FROM authoritypermission WHERE id = #{id}
 
+    </select>
+
+    <insert id="addPermission" parameterType="com.zinc.authoritydemo1.entity.PermissionEntity">
+        INSERT INTO authoritypermission(name,information,state,createtime,updatetime)
+        VALUES(#{name},#{information},#{state},#{createtime},#{updatetime})
+    </insert>
+
+
+    <delete id="tempDelete" parameterType="Integer">
+        UPDATE authoritypermission SET state = 0 WHERE id
+    </delete>
+
+    <delete id="forceDelete" parameterType="Integer">
+        DELETE FROM authoritypermission WHERE id = #{id}
+    </delete>
+
+    <update id="updateInformation">
+        UPDATE authoritypermission SET description = #{newInformation} WHERE id = #{id}
+
+    </update>
 </mapper>

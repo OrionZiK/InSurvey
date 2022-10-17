@@ -14,20 +14,25 @@ public class UserPermissionController {
     @Autowired
     UserPermissionService userPermissionService;
 
-//    //根据id查询权限
-//    @GetMapping("findById/{userId}")
-//    public List<Integer> findById(Integer userId){
-//        return UserPermissionService.findById(userId);
-//    }
-//
-//    //根据权限名称及id增加用户该权限
-//    @GetMapping("addPermission/{userId}/{permissionId}")
-//    public Integer addPermission(int userId,int permissionId){
-//        return UserPermissionService.addPermission(userId,permissionId);
-//    }
-//    //根据权限名称及id删除用户该权限
-//    @GetMapping("delPermission/{userId}/{permissionId}")
-//    public Integer delPermission(int userId,int permissionId){
-//        return UserPermissionService.delPermission(userId,permissionId);
-//    }
+    /**根据id查询该用户拥有的权限*/
+    @GetMapping("findById/{userId}")
+    public List<Integer> findById(Integer userId){
+        return userPermissionService.findById(userId);
+    }
+
+    /**根据权限id及id增加用户该权限*/
+    @GetMapping("addPermission/[userId,permissionId]")
+    public Integer addPermission(int userId,int permissionId){
+        return userPermissionService.addPermission(userId,permissionId);
+    }
+    /**根据权限id及id删除用户该权限*/
+    @GetMapping("delPermission/[userId,permissionId]")
+    public Integer delPermission(int userId,int permissionId){
+        return userPermissionService.delPermission(userId,permissionId);
+    }
+    /**根据权限id及id临时删除用户该权限*/
+    @GetMapping("tempDelPermission/[userId,permissionId]")
+    public Integer tempDelPermission(int userId,int permissionId){
+        return userPermissionService.tempDelPermission(userId,permissionId);
+    }
 }

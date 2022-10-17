@@ -18,18 +18,21 @@ public class UserController {
 //    @Autowired
 //    UserMapper userMapper;
 
-    /*查找-------------------*/
+    /**查找*/
     @GetMapping("/findall")
     public List<UserEntity> findAll() {
 
         return userService.findAll();
     }
+    //pass
 
     @GetMapping("/find/{name}")
     public List<UserEntity> findByName(@PathVariable String name) {
          return userService.findByName(name);
     }
-    //增加员工-------------
+    //pass
+
+    /**增加员工*/
     @PostMapping("/insert/[username,password,email,state]")
     Integer insertFull(@PathVariable String username,
                        @PathVariable String password,
@@ -39,22 +42,24 @@ public class UserController {
         //调用Seveice层
 
     }
+    //bugging
 
-    /**删除*/
+
     /**强制删除*/
     @GetMapping("/tempDelete/{name}")
     public Integer tempDelete(@PathVariable String name){
         return userService.tempDelete(name);
     }
+    //passing
+
     /**假删*/
-    @GetMapping("/delete/{name}")
+    @GetMapping("/forceDelete/{name}")
     public Integer forceDelete(@PathVariable String name){
         return userService.forceDelete(name);
     }
+    //bugging 强删和假删代码一样，修改假删代码
 
 
-
-    /**修改*/
     /**修改用户名*/
     @GetMapping("/updateUserName/{name}/{nameUpdate}")
     public Integer updateUserName(@PathVariable String name,@PathVariable String nameUpate){

@@ -2,4 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zinc.authoritydemo1.mapper.UserPermissionMapper">
+
+
+
+    <select id="findById" parameterType="integer" resultType="java.lang.Integer">
+
+
+    </select>
+    <!--给用户增加新权限-->
+    <insert id="addPermission">
+
+    </insert>
+
+    <delete id="delPermission">
+
+    </delete>
+    <update id="tempDelPermission">
+
+    </update>
 </mapper>
