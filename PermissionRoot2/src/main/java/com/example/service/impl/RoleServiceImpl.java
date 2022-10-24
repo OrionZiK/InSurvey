@@ -4,9 +4,9 @@ import com.example.entity.Role;
 import com.example.dao.RoleDao;
 import com.example.service.RoleService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+//import org.springframework.data.domain.Page;
+//import org.springframework.data.domain.PageImpl;
+//import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
 
@@ -39,11 +39,11 @@ public class RoleServiceImpl implements RoleService {
      * @param pageRequest 分页对象
      * @return 查询结果
      */
-    @Override
-    public Page<Role> queryByPage(Role role, PageRequest pageRequest) {
-        long total = this.roleDao.count(role);
-        return new PageImpl<>(this.roleDao.queryAllByLimit(role, pageRequest), pageRequest, total);
-    }
+//    @Override
+//    public Page<Role> queryByPage(Role role, PageRequest pageRequest) {
+//        long total = this.roleDao.count(role);
+//        return new PageImpl<>(this.roleDao.queryAllByLimit(role, pageRequest), pageRequest, total);
+//    }
 
     /**
      * 新增数据
@@ -56,6 +56,7 @@ public class RoleServiceImpl implements RoleService {
         this.roleDao.insert(role);
         return role;
     }
+
 
     /**
      * 修改数据

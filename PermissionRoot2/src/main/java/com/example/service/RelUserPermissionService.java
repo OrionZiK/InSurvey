@@ -1,8 +1,8 @@
 package com.example.service;
 
 import com.example.entity.RelUserPermission;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+//import org.springframework.data.domain.Page;
+//import org.springframework.data.domain.PageRequest;
 
 /**
  * (RelUserPermission)表服务接口
@@ -20,14 +20,14 @@ public interface RelUserPermissionService {
      */
     RelUserPermission queryById(Integer id);
 
-    /**
-     * 分页查询
-     *
-     * @param relUserPermission 筛选条件
-     * @param pageRequest       分页对象
-     * @return 查询结果
-     */
-    Page<RelUserPermission> queryByPage(RelUserPermission relUserPermission, PageRequest pageRequest);
+//    /**
+//     * 分页查询
+//     *
+//     * @param relUserPermission 筛选条件
+//     * @param pageRequest       分页对象
+//     * @return 查询结果
+//     */
+//    Page<RelUserPermission> queryByPage(RelUserPermission relUserPermission, PageRequest pageRequest);
 
     /**
      * 新增数据
