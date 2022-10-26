@@ -24,17 +24,6 @@ public class DepartmentController {
     @Resource
     private DepartmentService departmentService;
 
-    /**
-     * 分页查询
-     *
-     * @param department  筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
-    @GetMapping
-    public ResponseEntity<Page<Department>> queryByPage(Department department, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.departmentService.queryByPage(department, pageRequest));
-    }
 
     /**
      * 通过主键查询单条数据

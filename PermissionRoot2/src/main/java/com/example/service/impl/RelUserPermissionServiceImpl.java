@@ -32,18 +32,6 @@ public class RelUserPermissionServiceImpl implements RelUserPermissionService {
         return this.relUserPermissionDao.queryById(id);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param relUserPermission 筛选条件
-     * @param pageRequest       分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<RelUserPermission> queryByPage(RelUserPermission relUserPermission, PageRequest pageRequest) {
-        long total = this.relUserPermissionDao.count(relUserPermission);
-        return new PageImpl<>(this.relUserPermissionDao.queryAllByLimit(relUserPermission, pageRequest), pageRequest, total);
-    }
 
     /**
      * 新增数据

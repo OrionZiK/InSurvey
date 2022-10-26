@@ -24,17 +24,6 @@ public class RelUserPermissionController {
     @Resource
     private RelUserPermissionService relUserPermissionService;
 
-    /**
-     * 分页查询
-     *
-     * @param relUserPermission 筛选条件
-     * @param pageRequest       分页对象
-     * @return 查询结果
-     */
-    @GetMapping
-    public ResponseEntity<Page<RelUserPermission>> queryByPage(RelUserPermission relUserPermission, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.relUserPermissionService.queryByPage(relUserPermission, pageRequest));
-    }
 
     /**
      * 通过主键查询单条数据

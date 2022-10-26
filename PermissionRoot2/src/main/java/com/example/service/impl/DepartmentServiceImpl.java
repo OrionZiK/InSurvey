@@ -33,19 +33,6 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     /**
-     * 分页查询
-     *
-     * @param department  筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Department> queryByPage(Department department, PageRequest pageRequest) {
-        long total = this.departmentDao.count(department);
-        return new PageImpl<>(this.departmentDao.queryAllByLimit(department, pageRequest), pageRequest, total);
-    }
-
-    /**
      * 新增数据
      *
      * @param department 实例对象

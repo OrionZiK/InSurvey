@@ -32,18 +32,7 @@ public class PermissionServiceImpl implements PermissionService {
         return this.permissionDao.queryById(id);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param permission  筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<Permission> queryByPage(Permission permission, PageRequest pageRequest) {
-        long total = this.permissionDao.count(permission);
-        return new PageImpl<>(this.permissionDao.queryAllByLimit(permission, pageRequest), pageRequest, total);
-    }
+
 
     /**
      * 新增数据

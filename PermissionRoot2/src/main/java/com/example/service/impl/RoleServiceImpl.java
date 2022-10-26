@@ -32,18 +32,6 @@ public class RoleServiceImpl implements RoleService {
         return this.roleDao.queryById(id);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param role        筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
-//    @Override
-//    public Page<Role> queryByPage(Role role, PageRequest pageRequest) {
-//        long total = this.roleDao.count(role);
-//        return new PageImpl<>(this.roleDao.queryAllByLimit(role, pageRequest), pageRequest, total);
-//    }
 
     /**
      * 新增数据

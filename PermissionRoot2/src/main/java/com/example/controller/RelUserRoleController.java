@@ -25,18 +25,6 @@ public class RelUserRoleController {
     private RelUserRoleService relUserRoleService;
 
     /**
-     * 分页查询
-     *
-     * @param relUserRole 筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
-    @GetMapping
-    public ResponseEntity<Page<RelUserRole>> queryByPage(RelUserRole relUserRole, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.relUserRoleService.queryByPage(relUserRole, pageRequest));
-    }
-
-    /**
      * 通过主键查询单条数据
      *
      * @param id 主键

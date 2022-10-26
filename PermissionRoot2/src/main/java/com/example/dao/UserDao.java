@@ -1,11 +1,12 @@
 package com.example.dao;
 
 import com.example.entity.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-
+@Mapper
 /**
  * (User)表数据库访问层
  *
@@ -13,6 +14,11 @@ import java.util.List;
  * @since 2022-10-21 16:58:33
  */
 public interface UserDao {
+    /**
+     * 全部查询
+     * @return 返回全部对象
+     */
+    public List<User> findAll();
 
     /**
      * 通过ID查询单条数据

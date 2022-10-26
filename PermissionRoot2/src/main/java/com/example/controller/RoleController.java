@@ -24,17 +24,7 @@ public class RoleController {
     @Resource
     private RoleService roleService;
 
-    /**
-     * 分页查询
-     *
-     * @param role        筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
-    @GetMapping
-    public ResponseEntity<Page<Role>> queryByPage(Role role, PageRequest pageRequest) {
-        return ResponseEntity.ok(this.roleService.queryByPage(role, pageRequest));
-    }
+
 
     /**
      * 通过主键查询单条数据
@@ -42,7 +32,7 @@ public class RoleController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Role> queryById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(this.roleService.queryById(id));
     }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (User)表控制层
@@ -16,13 +17,28 @@ import javax.annotation.Resource;
  * @since 2022-10-21 16:58:33
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("/user")
 public class UserController {
     /**
      * 服务对象
      */
     @Resource
     private UserService userService;
+
+    @GetMapping("test")
+    public String test(){
+        return "hello,world!";
+    }
+    /**
+     *  单页查询全部信息
+     * @param void
+     * @return 全部查询数据
+     */
+    @GetMapping("/findall")
+    public List<User> findAll() {
+
+        return userService.findAll();
+    }
 
     /**
      * 分页查询
@@ -42,7 +58,7 @@ public class UserController {
      * @param id 主键
      * @return 单条数据
      */
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> queryById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(this.userService.queryById(id));
     }

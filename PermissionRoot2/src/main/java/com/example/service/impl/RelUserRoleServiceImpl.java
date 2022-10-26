@@ -32,18 +32,6 @@ public class RelUserRoleServiceImpl implements RelUserRoleService {
         return this.relUserRoleDao.queryById(id);
     }
 
-    /**
-     * 分页查询
-     *
-     * @param relUserRole 筛选条件
-     * @param pageRequest 分页对象
-     * @return 查询结果
-     */
-    @Override
-    public Page<RelUserRole> queryByPage(RelUserRole relUserRole, PageRequest pageRequest) {
-        long total = this.relUserRoleDao.count(relUserRole);
-        return new PageImpl<>(this.relUserRoleDao.queryAllByLimit(relUserRole, pageRequest), pageRequest, total);
-    }
 
     /**
      * 新增数据
