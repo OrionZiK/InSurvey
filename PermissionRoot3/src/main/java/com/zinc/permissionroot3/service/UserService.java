@@ -1,6 +1,7 @@
 package com.zinc.permissionroot3.service;
 
 import com.zinc.permissionroot3.entity.User;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
@@ -15,4 +16,6 @@ public interface UserService {
      * @return List<User>
      */
     List<User> findAll();
+
+    Object queryByPage(User user, PageRequest pageRequest);
 }
