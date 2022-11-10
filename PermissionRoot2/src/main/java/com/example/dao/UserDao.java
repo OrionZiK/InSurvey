@@ -6,13 +6,14 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-@Mapper
+
 /**
  * (User)表数据库访问层
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:33
  */
+@Mapper
 public interface UserDao {
     /**
      * 全部查询
@@ -37,6 +38,13 @@ public interface UserDao {
      */
     List<User> queryAllByLimit(User user, @Param("pageable") Pageable pageable);
 
+    /**
+     * 通过用户名模糊查询
+     *
+     * @param name 用户名
+     * @return List 实例对象
+     */
+    List<User> queryLikelyByName(String name);
     /**
      * 统计总行数
      *
@@ -70,6 +78,7 @@ public interface UserDao {
      */
     int insertOrUpdateBatch(@Param("entities") List<User> entities);
 
+
     /**
      * 修改数据
      *
@@ -84,7 +93,8 @@ public interface UserDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(@Param("id") Integer id);
+
 
 }
 

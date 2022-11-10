@@ -1,41 +1,37 @@
 package com.example.service;
 
 import com.example.entity.RelUserRole;
+import com.example.entity.User;
+
+import java.util.List;
 //import org.springframework.data.domain.Page;
 //import org.springframework.data.domain.PageRequest;
 
 /**
  * (RelUserRole)表服务接口
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:32
  */
 public interface RelUserRoleService {
 
     /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
+     * 根据ID查询全部角色
+     * @param id 用户主键
+     * @return List<User>
      */
+    List<Integer> findAllByUserId(Integer id);
+
     RelUserRole queryById(Integer id);
 
-//    /**
-//     * 分页查询
-//     *
-//     * @param relUserRole 筛选条件
-//     * @param pageRequest 分页对象
-//     * @return 查询结果
-//     */
-//    Page<RelUserRole> queryByPage(RelUserRole relUserRole, PageRequest pageRequest);
-
     /**
-     * 新增数据
+     * 为用户新增角色
      *
-     * @param relUserRole 实例对象
-     * @return 实例对象
+     * @param userId 用户主键 roleId 角色主键
+     *
+     * @return 是否成功
      */
-    RelUserRole insert(RelUserRole relUserRole);
+    Boolean insertByRoleId(Integer userId,Integer roleId);
 
     /**
      * 修改数据
@@ -48,9 +44,9 @@ public interface RelUserRoleService {
     /**
      * 通过主键删除数据
      *
-     * @param id 主键
+     * @param userId 用户主键
      * @return 是否成功
      */
-    boolean deleteById(Integer id);
+    boolean deleteById(Integer userId);
 
 }

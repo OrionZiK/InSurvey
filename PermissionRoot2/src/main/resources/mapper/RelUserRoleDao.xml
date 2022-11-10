@@ -10,6 +10,16 @@
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
+    <!--查询全部对象-->
+    <select id="findAll" resultMap="RelUserRoleMap">
+        select * from usser
+
+    </select>
+    <!--根据用户主键查询所有权限-->
+    <select id="findAllByUserId" parameterType="integer" resultType="java.lang.Integer">
+        select role_id from rel_user_role where  user_id = #{userId}
+
+    </select>
 
     <!--查询单个-->
     <select id="queryById" resultMap="RelUserRoleMap">
@@ -30,7 +40,7 @@
         from rel_user_role
         <where>
             <if test="id != null">
-                and id = #{id}
+                and id = #{id}nb
             </if>
             <if test="userId != null">
                 and user_id = #{userId}
@@ -77,33 +87,37 @@
         </where>
     </select>
 
-    <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    <!--新增用户角色-->
+    <insert id="insertByRoleId" keyProperty="id" useGeneratedKeys="true">
         insert into rel_user_role(user_id, role_id, del_flag, create_time, update_time)
         values (#{userId}, #{roleId}, #{delFlag}, #{createTime}, #{updateTime})
-    </insert>
+    </insert>>
+<!--    <insert id="insert" keyProperty="id" useGeneratedKeys="true">-->
+<!--        insert into rel_user_role(user_id, role_id, del_flag, create_time, update_time)-->
+<!--        values (#{userId}, #{roleId}, #{delFlag}, #{createTime}, #{updateTime})-->
+<!--    </insert>-->
 
-    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into rel_user_role(user_id, role_id, del_flag, create_time, update_time)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.userId}, #{entity.roleId}, #{entity.delFlag}, #{entity.createTime}, #{entity.updateTime})
-        </foreach>
-    </insert>
+<!--    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">-->
+<!--        insert into rel_user_role(user_id, role_id, del_flag, create_time, update_time)-->
+<!--        values-->
+<!--        <foreach collection="entities" item="entity" separator=",">-->
+<!--            (#{entity.userId}, #{entity.roleId}, #{entity.delFlag}, #{entity.createTime}, #{entity.updateTime})-->
+<!--        </foreach>-->
+<!--    </insert>-->
 
-    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into rel_user_role(user_id, role_id, del_flag, create_time, update_time)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.userId}, #{entity.roleId}, #{entity.delFlag}, #{entity.createTime}, #{entity.updateTime})
-        </foreach>
-        on duplicate key update
-        user_id = values(user_id),
-        role_id = values(role_id),
-        del_flag = values(del_flag),
-        create_time = values(create_time),
-        update_time = values(update_time)
-    </insert>
+<!--    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">-->
+<!--        insert into rel_user_role(user_id, role_id, del_flag, create_time, update_time)-->
+<!--        values-->
+<!--        <foreach collection="entities" item="entity" separator=",">-->
+<!--            (#{entity.userId}, #{entity.roleId}, #{entity.delFlag}, #{entity.createTime}, #{entity.updateTime})-->
+<!--        </foreach>-->
+<!--        on duplicate key update-->
+<!--        user_id = values(user_id),-->
+<!--        role_id = values(role_id),-->
+<!--        del_flag = values(del_flag),-->
+<!--        create_time = values(create_time),-->
+<!--        update_time = values(update_time)-->
+<!--    </insert>-->
 
     <!--通过主键修改数据-->
     <update id="update">
@@ -129,10 +143,10 @@
     </update>
 
     <!--通过主键删除-->
-    <delete id="deleteById">
-        delete
-        from rel_user_role
-        where id = #{id}
+    <delete id="deleteById" parameterType="integer">
+        update rel_user_role
+        set del_flag = 1
+        where user_id = #{userId}
     </delete>
 
 </mapper>

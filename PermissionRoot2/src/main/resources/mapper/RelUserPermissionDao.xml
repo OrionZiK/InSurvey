@@ -10,7 +10,11 @@
         <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
         <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
+    <!--查询全部对象-->
+    <select id="findAll" resultMap="RelUserPermissionMap">
+        select * from usser
 
+    </select>
     <!--查询单个-->
     <select id="queryById" resultMap="RelUserPermissionMap">
         select id,
@@ -76,6 +80,10 @@
             </if>
         </where>
     </select>
+    <!--根据用户主键查询权限主键-->
+    <select id="findAllByUserId" resultType="java.lang.Integer">
+        select permission_id from rel_user_permission where  user_id = #{userId}
+    </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
@@ -129,10 +137,10 @@
     </update>
 
     <!--通过主键删除-->
-    <delete id="deleteById">
-        delete
-        from rel_user_permission
-        where id = #{id}
+    <delete id="deleteById" parameterType="integer">
+        update rel_user_permission
+        set del_flag = 1
+        where user_id = #{userId}
     </delete>
 
 </mapper>

@@ -1,20 +1,26 @@
 package com.example.dao;
 
 import com.example.entity.RelUserPermission;
+import com.example.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-@Mapper
+
 /**
  * (RelUserPermission)表数据库访问层
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:32
  */
+@Mapper
 public interface RelUserPermissionDao {
-
+    /**
+     * 全部查询
+     * @return 返回全部对象
+     */
+    public List<User> findAll();
     /**
      * 通过ID查询单条数据
      *
@@ -23,6 +29,7 @@ public interface RelUserPermissionDao {
      */
     RelUserPermission queryById(Integer id);
 
+    List<Integer> findAllByUserId(@Param("userId") Integer userId);
     /**
      * 查询指定行数据
      *
@@ -79,7 +86,7 @@ public interface RelUserPermissionDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(@Param("userId") Integer userId);
 
 }
 

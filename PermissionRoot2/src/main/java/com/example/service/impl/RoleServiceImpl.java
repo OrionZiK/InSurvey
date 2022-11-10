@@ -2,6 +2,7 @@ package com.example.service.impl;
 
 import com.example.entity.Role;
 import com.example.dao.RoleDao;
+import com.example.entity.User;
 import com.example.service.RoleService;
 import org.springframework.stereotype.Service;
 //import org.springframework.data.domain.Page;
@@ -9,11 +10,12 @@ import org.springframework.stereotype.Service;
 //import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Role)表服务实现类
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:33
  */
 @Service("roleService")
@@ -22,14 +24,13 @@ public class RoleServiceImpl implements RoleService {
     private RoleDao roleDao;
 
     /**
-     * 通过ID查询单条数据
-     *
-     * @param id 主键
-     * @return 实例对象
+     * 查询全部
+     * @return List
      */
     @Override
-    public Role queryById(Integer id) {
-        return this.roleDao.queryById(id);
+    public List<Role> findAll() {
+        List<Role> list = roleDao.findAll();
+        return list;
     }
 
 
@@ -45,18 +46,11 @@ public class RoleServiceImpl implements RoleService {
         return role;
     }
 
-
-    /**
-     * 修改数据
-     *
-     * @param role 实例对象
-     * @return 实例对象
-     */
     @Override
     public Role update(Role role) {
-        this.roleDao.update(role);
-        return this.queryById(role.getId());
+        return null;
     }
+
 
     /**
      * 通过主键删除数据

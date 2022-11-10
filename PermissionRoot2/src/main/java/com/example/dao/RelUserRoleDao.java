@@ -6,14 +6,21 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-@Mapper
+
 /**
  * (RelUserRole)表数据库访问层
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:32
  */
+@Mapper
 public interface RelUserRoleDao {
+    /**
+     * 全部查询
+     * @Params id 主键
+     * @return 返回该用户权限对应主键
+     */
+    List<Integer> findAllByUserId(@Param("userId") Integer userId);
 
     /**
      * 通过ID查询单条数据
@@ -41,29 +48,12 @@ public interface RelUserRoleDao {
     long count(RelUserRole relUserRole);
 
     /**
-     * 新增数据
+     * 为用户新增角色
      *
      * @param relUserRole 实例对象
      * @return 影响行数
      */
-    int insert(RelUserRole relUserRole);
-
-    /**
-     * 批量新增数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<RelUserRole> 实例对象列表
-     * @return 影响行数
-     */
-    int insertBatch(@Param("entities") List<RelUserRole> entities);
-
-    /**
-     * 批量新增或按主键更新数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<RelUserRole> 实例对象列表
-     * @return 影响行数
-     * @throws org.springframework.jdbc.BadSqlGrammarException 入参是空List的时候会抛SQL语句错误的异常，请自行校验入参
-     */
-    int insertOrUpdateBatch(@Param("entities") List<RelUserRole> entities);
+    int insertByRoleId(RelUserRole relUserRole);
 
     /**
      * 修改数据
@@ -79,7 +69,7 @@ public interface RelUserRoleDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(@Param("userId") Integer userId);
 
 }
 

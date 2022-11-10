@@ -1,20 +1,25 @@
 package com.example.dao;
 
 import com.example.entity.Role;
+import com.example.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-@Mapper
+
 /**
  * (Role)表数据库访问层
- *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:33
  */
+@Mapper
 public interface RoleDao {
-
+    /**
+     * 全部查询
+     * @return 返回全部对象
+     */
+    public List<Role> findAll();
     /**
      * 通过ID查询单条数据
      *
@@ -79,7 +84,7 @@ public interface RoleDao {
      * @param id 主键
      * @return 影响行数
      */
-    int deleteById(Integer id);
+    int deleteById(@Param("id") Integer id);
 
 }
 

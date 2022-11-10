@@ -2,17 +2,16 @@ package com.example.controller;
 
 import com.example.entity.RelUserPermission;
 import com.example.service.RelUserPermissionService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (RelUserPermission)表控制层
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:32
  */
 @RestController
@@ -23,17 +22,15 @@ public class RelUserPermissionController {
      */
     @Resource
     private RelUserPermissionService relUserPermissionService;
-
-
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     *  查询该用户的所有权限
+     * @Params id 用户主键
+     * @return 全部查询数据
      */
-    @GetMapping("{id}")
-    public ResponseEntity<RelUserPermission> queryById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(this.relUserPermissionService.queryById(id));
+    @GetMapping("/findall/{userId}")
+    public List<Integer> findAllByUserId(@PathVariable("userId") Integer userId) {
+
+        return relUserPermissionService.findAllByUserId(userId);
     }
 
     /**
@@ -61,13 +58,12 @@ public class RelUserPermissionController {
     /**
      * 删除数据
      *
-     * @param id 主键
+     * @param userId 用户主键
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Integer id) {
-        return ResponseEntity.ok(this.relUserPermissionService.deleteById(id));
+    @DeleteMapping("/deleteById/{userId}")
+    public Boolean deleteById(@PathVariable("userId") Integer userId) {
+        return this.relUserPermissionService.deleteById(userId);
     }
-
 }
 

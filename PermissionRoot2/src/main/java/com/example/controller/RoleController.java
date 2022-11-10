@@ -2,17 +2,16 @@ package com.example.controller;
 
 import com.example.entity.Role;
 import com.example.service.RoleService;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Role)表控制层
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:33
  */
 @RestController
@@ -25,16 +24,14 @@ public class RoleController {
     private RoleService roleService;
 
 
-
     /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
+     *  单页查询全部信息
+     * @return 全部查询数据
      */
-    @GetMapping("/{id}")
-    public ResponseEntity<Role> queryById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(this.roleService.queryById(id));
+    @GetMapping("/findall")
+    public List<Role> findAll() {
+
+        return roleService.findAll();
     }
 
     /**
@@ -65,9 +62,10 @@ public class RoleController {
      * @param id 主键
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Integer id) {
-        return ResponseEntity.ok(this.roleService.deleteById(id));
+    @DeleteMapping("/deleteById/{id}")
+    public Boolean deleteById(@PathVariable("id") Integer id) {
+        System.out.println("id="+id);
+        return this.roleService.deleteById(id);
     }
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * (User)表控制层
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:33
  */
 @RestController
@@ -25,10 +25,7 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @GetMapping("test")
-    public String test(){
-        return "hello,world!";
-    }
+
     /**
      *  单页查询全部信息
      * @param void
@@ -47,9 +44,20 @@ public class UserController {
      * @param pageRequest 分页对象
      * @return 查询结果
      */
-    @GetMapping
+    @GetMapping("/page")
     public ResponseEntity<Page<User>> queryByPage(User user, PageRequest pageRequest) {
         return ResponseEntity.ok(this.userService.queryByPage(user, pageRequest));
+    }
+
+    /**
+     * 模糊查询
+     *
+     * @Param name 用户名
+     * @Return  查询结果
+     */
+    @GetMapping("/queryLikelyByName/{name}")
+    public List<User> queryLikelyByName(@PathVariable String name){
+        return userService.queryLikelyByName(name);
     }
 
     /**
@@ -69,9 +77,9 @@ public class UserController {
      * @param user 实体
      * @return 新增结果
      */
-    @PostMapping
-    public ResponseEntity<User> add(User user) {
-        return ResponseEntity.ok(this.userService.insert(user));
+    @PostMapping("/insert")
+    public User add(@RequestBody User user) {
+        return this.userService.insert(user);
     }
 
     /**
@@ -91,9 +99,9 @@ public class UserController {
      * @param id 主键
      * @return 删除是否成功
      */
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteById(Integer id) {
-        return ResponseEntity.ok(this.userService.deleteById(id));
+    @DeleteMapping("/deleteById/{id}")
+    public boolean deleteById(@PathVariable("id") Integer id) {
+        return this.userService.deleteById(id);
     }
 
 }

@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/permission_root?currentSchema=user&amp;
+    url: jdbc:postgresql://127.0.0.1:5432/permission?currentSchema=user&amp;
     driver-class-name: org.postgresql.Driver
     username: postgres
     password: root

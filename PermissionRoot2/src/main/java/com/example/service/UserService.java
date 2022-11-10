@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * (User)表服务接口
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:33
  */
 public interface UserService {
@@ -37,7 +37,13 @@ public interface UserService {
      * @return 查询结果
      */
     Page<User> queryByPage(User user, PageRequest pageRequest);
-
+    /**
+     * 通过用户名模糊查询
+     *
+     * @param name 用户名
+     * @return List 实例对象
+     */
+    List<User> queryLikelyByName(String name);
     /**
      * 新增数据
      *
@@ -61,5 +67,6 @@ public interface UserService {
      * @return 是否成功
      */
     boolean deleteById(Integer id);
+
 
 }

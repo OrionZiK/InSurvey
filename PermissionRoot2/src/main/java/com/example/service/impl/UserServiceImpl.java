@@ -11,12 +11,17 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Date;
+
+import static org.aspectj.bridge.Version.getTime;
+
 
 /**
  * (User)表服务实现类
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:33
  */
 @Service("userService")
@@ -60,6 +65,17 @@ public class UserServiceImpl implements UserService {
     }
 
     /**
+     * 通过用户名模糊查询
+     *
+     * @param name 用户名
+     * @return List 实例对象
+     */
+    @Override
+    public List<User> queryLikelyByName(String name) {
+        return this.userDao.queryLikelyByName(name);
+    }
+
+    /**
      * 新增数据
      *
      * @param user 实例对象
@@ -67,9 +83,13 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public User insert(User user) {
+        //user.setCreateTime(getTimeStamp());
         this.userDao.insert(user);
+
         return user;
+
     }
+
 
     /**
      * 修改数据
@@ -91,6 +111,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public boolean deleteById(Integer id) {
+        System.out.println("id="+id);
         return this.userDao.deleteById(id) > 0;
     }
 }

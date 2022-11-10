@@ -1,20 +1,26 @@
 package com.example.dao;
 
 import com.example.entity.Permission;
+import com.example.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-@Mapper
+
 /**
  * (Permission)表数据库访问层
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:31
  */
+@Mapper
 public interface PermissionDao {
-
+    /**
+     * 全部查询
+     * @return 返回全部对象
+     */
+    public List<Permission> findAll();
     /**
      * 通过ID查询单条数据
      *

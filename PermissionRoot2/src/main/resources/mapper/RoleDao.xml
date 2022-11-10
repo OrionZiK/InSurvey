@@ -10,6 +10,11 @@
         <result property="delFlag" column="del_flag" jdbcType="INTEGER"/>
     </resultMap>
 
+    <!--查询全部对象-->
+    <select id="findAll" resultMap="RoleMap">
+        select * from role
+
+    </select>
     <!--查询单个-->
     <select id="queryById" resultMap="RoleMap">
         select id,
@@ -118,8 +123,8 @@
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete
-        from role
+        update role
+        set del_flag = 1
         where id = #{id}
     </delete>
 

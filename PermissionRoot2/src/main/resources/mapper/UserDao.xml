@@ -19,7 +19,7 @@
 
     <!--查询全部对象-->
     <select id="findAll" resultMap="UserMap">
-    select * from user
+    select * from usser
 
     </select>
 
@@ -37,16 +37,19 @@
                username,
                update_time,
                dept_id
-        from user
+        from usser
         where id = #{id}
     </select>
-
+    <!--根据用户名模糊查询-->
+    <select id="queryLikelyByName" parameterType="string" resultMap="UserMap">
+        select * from usser where name ~ #{name}
+    </select>
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="UserMap">
         select
         id, name, phone, create_time, password, del_flag, attempt_times, attempt_time, locked_status, username,
         update_time, dept_id
-        from user
+        from usser
         <where>
             <if test="id != null">
                 and id = #{id}
@@ -91,7 +94,7 @@
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)
-        from user
+        from usser
         <where>
             <if test="id != null">
                 and id = #{id}
@@ -131,6 +134,7 @@
             </if>
         </where>
     </select>
+
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
@@ -216,11 +220,11 @@
     </update>
 
     <!--通过主键删除-->
-    <delete id="deleteById">
-        delete
-        from user
+    <update id="deleteById" parameterType="integer" >
+        update usser
+        set del_flag = 1
         where id = #{id}
-    </delete>
+    </update>
 
 </mapper>
 

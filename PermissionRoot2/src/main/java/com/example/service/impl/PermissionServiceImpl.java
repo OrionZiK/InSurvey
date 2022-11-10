@@ -2,25 +2,32 @@ package com.example.service.impl;
 
 import com.example.entity.Permission;
 import com.example.dao.PermissionDao;
+import com.example.entity.Role;
 import com.example.service.PermissionService;
 import org.springframework.stereotype.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * (Permission)表服务实现类
  *
- * @author makejava
+ * @author OrionZinc
  * @since 2022-10-21 16:58:32
  */
 @Service("permissionService")
 public class PermissionServiceImpl implements PermissionService {
     @Resource
     private PermissionDao permissionDao;
-
+    /**
+     * 查询全部
+     * @return List
+     */
+    @Override
+    public List<Permission> findAll() {
+        List<Permission> list = permissionDao.findAll();
+        return list;
+    }
     /**
      * 通过ID查询单条数据
      *
@@ -31,7 +38,6 @@ public class PermissionServiceImpl implements PermissionService {
     public Permission queryById(Integer id) {
         return this.permissionDao.queryById(id);
     }
-
 
 
     /**
