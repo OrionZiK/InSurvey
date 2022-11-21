@@ -22,11 +22,18 @@ public class ShiroConfig {
         ShiroFilterFactoryBean bean = new ShiroFilterFactoryBean();
         //设置安全管理
         bean.setSecurityManager(defaultWebSecurityManager);
-        return bean;
+
         //添加shrio内置过虑器
+
+        //登录拦截
         Map<String, String> filterMap = new LinkedHashMap<>();
         filterMap.put("/user/add","authc");
         filterMap.put("/user/update","authc");
+        bean.setFilterChainDefinitionMap(filterMap);
+        //设置登录的请求
+        bean.setLoginUrl("/toLogin");
+
+        return bean;
     }
 
     //DefaultWebSecurityManager
